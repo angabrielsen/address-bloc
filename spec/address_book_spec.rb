@@ -38,11 +38,19 @@
    end
 
   context "#remove_entry" do
-    it "removes an entry from the adress book" do
+    it "removes an entry from the address book" do
       book = AddressBook.new
-      book.remove_entry('Ada Lovelace', '010.012.1815', 'augusta.king@lovelace.com')
+      book.add_entry('Ashton Levier', '801.326.0337', 'anlevier@gmail.com')
 
-      expect(book.entries.size).to eq 0
+      name = 'Ada Lovelace'
+      phone_number = '010.012.1815'
+      email = 'augusta.king@lovelace.com'
+      book.add_entry(name, phone_number, email) 
+
+      expect(book.entries.size).to eq 2
+      book.remove_entry(name, phone_number, email)
+      expect(book.entries.size).to eq 1
+      expect(book.entries.name).to eq'Ashton Levier'
     end
- end
+  end
 end
