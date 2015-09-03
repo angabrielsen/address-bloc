@@ -14,7 +14,8 @@ require_relative '../models/address_book'
      puts "2 - Create an entry"
      puts "3 - Search for an entry"
      puts "4 - Import entries from a CSV"
-     puts "5 - Exit"
+     puts "5 - View Entry Number n"
+     puts "6 - Exit"
      print "Enter your selection: "
  
 
@@ -37,6 +38,9 @@ require_relative '../models/address_book'
        read_csv
        main_menu
      when 5
+      system "clear"
+      view_entry
+     when 6
        puts "Good-bye!"
  # #8
        exit(0)
@@ -47,6 +51,27 @@ require_relative '../models/address_book'
        main_menu
    end
  end
+
+ def view_entry
+  directory = []
+
+  @address_book.entries.each do |entry|
+    directory << entry
+  end
+
+  print "Enter a number between 1 and #{directory.count}: "
+
+  selection = gets.to_i
+
+  if selection <= directory.count
+    puts @address_book.entries[selection]
+    system = "clear"
+    main_menu
+  else
+    puts "#{selection} is invalid"
+    main_menu
+  end
+end
 
   def view_all_entries
    end
