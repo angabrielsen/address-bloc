@@ -9,6 +9,18 @@ class AddressBook
        @entries = []
    end
    
+    def nuke
+    print "Are you sure? 1. Yes 2. No"
+    reply = gets.chomp
+
+    if reply = 1
+      @entries = []
+      puts "All entries deleted"
+    elsif 
+      puts "No entries deleted"
+    end      
+ end
+   
    def add_entry(name, phone, email)
 
      index = 0
